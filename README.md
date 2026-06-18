@@ -30,19 +30,19 @@
 
 ## 1. Portada profesional
 
-> **Repositorio oficial del módulo:**
-> **Científico de Datos e Inteligencia Artificial Aplicada**
+### Repositorio Oficial del Módulo
 
-```text
-╔══════════════════════════════════════════════════════════════════════╗
-║      DevSeniorCode | Formación Profesional en Data & AI             ║
-║----------------------------------------------------------------------║
-║      Módulo: Científico de Datos e Inteligencia Artificial Aplicada  ║
-║      Nivel: Avanzado                                                 ║
-║      Modalidad: Teórico-Práctica                                     ║
-║      Enfoque: Deep Learning, NLP, IA Generativa y MLOps             ║
-╚══════════════════════════════════════════════════════════════════════╝
-```
+**Científico de Datos e Inteligencia Artificial Aplicada**
+
+| Elemento | Detalle |
+|---|---|
+| Academia | DevSeniorCode |
+| Docente | Juan David Triana Turmeque |
+| Nivel | Avanzado |
+| Modalidad | Teórico-Práctica |
+| Área | Ciencia de Datos, Inteligencia Artificial y MLOps |
+
+> Formación orientada al diseño, entrenamiento, optimización y despliegue de soluciones de IA con enfoque profesional.
 
 ---
 
