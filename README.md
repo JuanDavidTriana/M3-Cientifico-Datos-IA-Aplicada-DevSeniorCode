@@ -146,6 +146,12 @@ Al finalizar el módulo, el estudiante estará en capacidad de:
 - Usar commits atómicos con mensajes descriptivos.
 - Documentar decisiones técnicas clave en cada entrega.
 
+### Nota importante sobre datasets y archivos de apoyo
+
+- Los archivos pesados o sensibles para entrenar modelos (por ejemplo: CSV, imágenes, audios, videos) no deben subirse al repositorio.
+- En su lugar, se debe dejar el enlace oficial de origen (Kaggle u otra fuente confiable) y una breve instrucción de descarga.
+- Cada estudiante debe descargar y cargar localmente esos archivos en su entorno para ejecutar las actividades.
+
 ---
 
 
