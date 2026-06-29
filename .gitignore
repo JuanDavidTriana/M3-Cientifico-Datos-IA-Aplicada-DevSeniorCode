@@ -1,7 +1,6 @@
 *csv
 !02_nlp_ia_generativa/clase_01_text_mining_embeddings/Clase-01-Text-Mining-y-Embeddings/datasets/
 !02_nlp_ia_generativa/clase_01_text_mining_embeddings/Clase-01-Text-Mining-y-Embeddings/datasets/*.csv
-!02_nlp_ia_generativa/clase_01_text_mining_embeddings/Clase-01-Text-Mining-y-Embeddings/*
 
 # Ignorar carpeta completa para no subirla a Git
 02_nlp_ia_generativa/clase_01_text_mining_embeddings/
