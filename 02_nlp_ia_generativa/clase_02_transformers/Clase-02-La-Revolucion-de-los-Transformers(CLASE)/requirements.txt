@@ -1,0 +1,14 @@
+torch
+transformers
+datasets
+tensorflow
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+jupyter
+ipykernel
+accelerate
+sentencepiece
+protobuf

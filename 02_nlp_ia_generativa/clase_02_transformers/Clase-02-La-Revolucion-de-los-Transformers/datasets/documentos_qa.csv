@@ -1,0 +1,9 @@
+contexto,pregunta,respuesta
+"Python fue creado por Guido van Rossum y publicado en 1991. Es ampliamente usado en ciencia de datos e inteligencia artificial.",¿Quién creó Python?,Guido van Rossum
+"Python fue creado por Guido van Rossum y publicado en 1991. Es ampliamente usado en ciencia de datos e inteligencia artificial.",¿En qué año se publicó Python?,1991
+"Los Transformers fueron introducidos en el paper Attention Is All You Need en 2017 por investigadores de Google.",¿Qué empresa introdujo los Transformers?,Google
+"Los Transformers fueron introducidos en el paper Attention Is All You Need en 2017 por investigadores de Google.",¿En qué año se publicó el paper?,2017
+"BERT es un modelo encoder-only entrenado con Masked Language Modeling y Next Sentence Prediction.",¿Qué tipo de arquitectura usa BERT?,encoder-only
+"GPT predice la siguiente palabra de forma autoregresiva usando una arquitectura decoder-only.",¿Qué predice GPT?,la siguiente palabra
+"La capa de Self-Attention permite que cada token observe a todos los demás tokens de la secuencia.",¿Qué permite la Self-Attention?,que cada token observe a todos los demás tokens
+"T5 reformula todas las tareas de NLP como problemas de texto a texto.",¿Cómo reformula T5 las tareas?,texto a texto

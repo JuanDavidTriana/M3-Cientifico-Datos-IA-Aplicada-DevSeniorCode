@@ -1,0 +1,6 @@
+torch
+transformers
+pandas
+matplotlib
+jupyter
+ipykernel

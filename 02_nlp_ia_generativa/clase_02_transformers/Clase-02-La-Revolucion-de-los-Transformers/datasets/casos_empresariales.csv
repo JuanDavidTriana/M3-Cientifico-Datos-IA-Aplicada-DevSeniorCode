@@ -1,0 +1,21 @@
+empresa,sector,aplicacion,modelo_tipo,descripcion
+Netflix,Entretenimiento,Recomendación de contenido,Encoder + embeddings,Personaliza sugerencias de series y películas según historial y similitud semántica.
+Amazon,E-commerce,Búsqueda y recomendación,Encoder + ranking,Mejora resultados de búsqueda y sugerencias de productos con modelos de lenguaje.
+Spotify,Música,Recomendación y playlists,Embeddings + clasificación,Sugiere canciones y crea playlists según preferencias y contexto.
+Google,Tecnología,Búsqueda y traducción,Encoder-Decoder + LLM,Traduce idiomas y responde consultas con modelos Transformer a gran escala.
+Microsoft,Tecnología,Copilot y productividad,Decoder-only LLM,Asiste en código y documentos integrando GPT en el ecosistema Office y GitHub.
+OpenAI,Tecnología,ChatGPT y APIs,Decoder-only LLM,Genera texto conversacional y resuelve tareas con instrucciones en lenguaje natural.
+Tesla,Automotriz,Procesamiento de voz y comandos,Encoder + ASR,Interpreta comandos de voz y texto en interfaces del vehículo.
+BBVA,Finanzas,Análisis de documentos,Encoder-only,Clasifica contratos y extrae cláusulas relevantes en procesos bancarios.
+Hospital Clínic,Salud,Resumen de historiales,Encoder-Decoder,Resume notas clínicas para apoyar decisiones médicas con revisión humana.
+Universidad Stanford,Educación,Tutoría y corrección,Decoder-only LLM,Apoya aprendizaje con explicaciones y retroalimentación personalizada.
+Maersk,Logística,Clasificación de correos,Encoder-only,Enruta solicitudes logísticas según intención y urgencia detectada.
+Mercado Libre,E-commerce,Chatbot de atención,Decoder-only LLM,Responde preguntas frecuentes y gestiona reclamos de clientes.
+Zendesk,Soporte,Clasificación de tickets,Encoder-only,Prioriza y enruta tickets según tema y sentimiento del cliente.
+HubSpot,Marketing,Generación de copy,Decoder-only LLM,Crea borradores de campañas y emails personalizados.
+GitHub Copilot,Programación,Autocompletado de código,Decoder-only LLM,Sugiere funciones y bloques de código en el IDE del desarrollador.
+Coursera,Educación,Resumen de lecciones,Encoder-Decoder,Genera resúmenes de contenido educativo para repaso rápido.
+Thomson Reuters,Legal,Búsqueda jurídica,Encoder-only,Encuentra precedentes y cláusulas relevantes en bases legales.
+JPMorgan,Finanzas,Análisis de riesgo textual,Encoder-only,Evalúa reportes y noticias para señales de riesgo crediticio.
+LinkedIn,Recursos Humanos,Matching candidato-puesto,Embeddings + ranking,Empareja perfiles y vacantes por similitud semántica de habilidades.
+Mistral AI,Tecnología,LLM open source,Decoder-only LLM,Ofrece modelos eficientes para despliegue empresarial con control de datos.

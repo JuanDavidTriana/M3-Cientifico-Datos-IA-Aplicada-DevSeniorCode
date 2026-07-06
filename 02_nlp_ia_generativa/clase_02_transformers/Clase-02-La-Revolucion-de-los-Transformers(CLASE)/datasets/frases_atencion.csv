@@ -1,0 +1,16 @@
+id,frase,nota
+1,"El perro mordió al hombre porque él estaba asustado.",ambiguedad_pronombre
+2,"La profesora felicitó a la estudiante porque ella aprobó el examen.",ambiguedad_pronombre
+3,"El banco cerró temprano porque llovió mucho.",ambiguedad_lexica
+4,"Fui al banco del parque a leer un libro.",ambiguedad_lexica
+5,"El gato persigió al ratón hasta que se escondió.",ambiguedad_pronombre
+6,"María le dijo a Ana que ella ganó la beca.",ambiguedad_pronombre
+7,"El médico revisó al paciente y le recetó medicina.",referencia_cruzada
+8,"La empresa aumentó precios porque la demanda creció.",causalidad
+9,"No vendí el coche porque necesitaba dinero.",negacion_causal
+10,"Los niños comieron pasteles después de la fiesta.",orden_temporal
+11,"Después de la fiesta comieron pasteles los niños.",orden_cambiado
+12,"El contrato fue firmado por el abogado ayer.",voz_pasiva
+13,"Ayer el abogado firmó el contrato.",voz_activa
+14,"OpenAI lanzó un nuevo modelo de lenguaje.",hecho_tecnologico
+15,"Los transformers revolucionaron el procesamiento de lenguaje natural.",hecho_tecnologico
