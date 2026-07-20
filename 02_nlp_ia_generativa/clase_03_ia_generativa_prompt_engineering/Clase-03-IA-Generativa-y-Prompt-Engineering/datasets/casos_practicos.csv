@@ -1,0 +1,9 @@
+empresa,sector,problema,prompt_sugerido,tecnica
+TechNova SaaS,Tecnologia,Clasificar tickets de soporte por urgencia,Clasifica urgencia alta/media/baja con few-shot de tickets reales,few-shot
+MediSalud,Salud,Resumir historiales clinicos para medicos,Resume en 5 bullets solo datos del contexto. No inventes diagnosticos.,context
+LegalCorp,Legal,Extraer clausulas de contratos laborales,Extrae clausulas de terminacion plazo y penalidades. Formato JSON.,few-shot
+RetailMax,E-commerce,Generar descripciones de producto,Eres copywriter. 80 palabras tono juvenil incluye 3 beneficios.,role
+DataFlow,Analitica,Explicar metricas a ejecutivos no tecnicos,Eres consultor de negocios. Explica en lenguaje simple sin jerga.,role
+CloudOps,DevOps,Generar scripts de automatizacion,Genera script Python con manejo de errores. Solo codigo comentado.,few-shot
+EduSmart,Educacion,Tutor IA para estudiantes,Eres tutor paciente. Explica paso a paso con ejemplo simple.,chain-of-thought
+FinanceHub,Finanzas,Analizar reportes trimestrales,Segun el documento responde preguntas. Si no esta di No disponible.,context

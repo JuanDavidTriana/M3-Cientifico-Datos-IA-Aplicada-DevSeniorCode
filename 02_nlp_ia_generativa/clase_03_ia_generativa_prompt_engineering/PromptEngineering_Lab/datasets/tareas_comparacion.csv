@@ -1,0 +1,11 @@
+tarea,descripcion,categoria,tecnica_recomendada
+Clasificar sentimiento,Determinar si una reseña es positiva negativa o neutral,analisis,zero-shot
+Clasificar urgencia de ticket,Asignar alta media o baja segun el mensaje del cliente,soporte,few-shot
+Resumir documento,Generar resumen ejecutivo de un texto largo,resumen,context
+Traducir texto,Convertir de español a ingles manteniendo nombres propios,traduccion,one-shot
+Generar codigo Python,Escribir funcion que resuelva un problema dado,desarrollo,few-shot
+Explicar concepto tecnico,Explicar un termino a un principiante,educacion,role
+Analizar contrato,Extraer clausulas clave de un documento legal,legal,context
+Crear copy de marketing,Redactar descripcion de producto para web,marketing,role
+Resolver problema logico,Calcular resultado con razonamiento paso a paso,razonamiento,chain-of-thought
+Responder con contexto,Responder pregunta usando solo un documento dado,qa,context

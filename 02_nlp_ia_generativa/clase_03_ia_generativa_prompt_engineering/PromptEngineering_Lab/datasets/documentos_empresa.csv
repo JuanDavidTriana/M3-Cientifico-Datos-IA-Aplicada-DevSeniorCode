@@ -1,0 +1,6 @@
+id,titulo,contenido
+1,Politica de devoluciones,Las devoluciones se aceptan dentro de 30 dias calendario. El producto debe estar sin usar y con factura original. No se aceptan productos personalizados. El reembolso se procesa en 5-10 dias habiles.
+2,Plan empresarial,El plan Enterprise incluye hasta 50 usuarios soporte 24/7 y almacenamiento de 500GB. Precio: 299 USD mensuales. Incluye integracion API y SLA del 99.9%.
+3,Manual de onboarding,Paso 1: Crear cuenta con email corporativo. Paso 2: Verificar email. Paso 3: Configurar perfil y equipo. Paso 4: Importar datos desde CSV o API. Tiempo estimado: 30 minutos.
+4,Reporte Q3 2025,Las ventas del Q3 2025 alcanzaron 2.4 millones USD un crecimiento del 18% vs Q2. El segmento B2B represento el 62% del total. La tasa de churn se redujo al 3.1%.
+5,Guia de seguridad,Las contrasenas deben tener minimo 12 caracteres incluir mayusculas numeros y simbolos. Se recomienda activar autenticacion de dos factores. Los accesos se registran en el log de auditoria.

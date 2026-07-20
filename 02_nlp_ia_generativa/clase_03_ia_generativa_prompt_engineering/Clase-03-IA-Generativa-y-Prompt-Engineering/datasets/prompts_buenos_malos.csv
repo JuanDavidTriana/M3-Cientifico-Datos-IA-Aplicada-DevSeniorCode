@@ -1,0 +1,9 @@
+id,tipo,texto,problema,mejora
+1,malo,Analiza esto,Demasiado vago sin instruccion ni formato,Clasifica el sentimiento como positivo negativo o neutral. Responde solo con la etiqueta.
+2,malo,Escribe sobre IA,Sin longitud tono ni audiencia,Escribe 100 palabras sobre IA en educacion. Tono divulgativo. 3 parrafos cortos.
+3,malo,Traduce,No especifica idiomas ni reglas,Traduce del espanol al ingles. Manten nombres propios. Solo la traduccion sin explicaciones.
+4,malo,Dame datos de ventas,Puede alucinar cifras,Segun el contexto abajo cual fue la venta de Q3? Si no esta responde No disponible.
+5,malo,Resume,No define longitud ni enfoque,Resume en exactamente 5 bullets. Solo hechos del texto. Maximo 15 palabras por bullet.
+6,bueno,Clasifica urgencia alta media baja. Responde solo con la etiqueta:,Instruccion clara formato acotado,Listo para usar con few-shot examples
+7,bueno,Eres analista financiero. Resume riesgos en 3 bullets sin inventar cifras:,Rol + tarea + restriccion anti-alucinacion,Modelo para prompts empresariales
+8,bueno,Piensa paso a paso antes de responder. Cuantas manzanas quedan?,CoT explicito para razonamiento,Mejora precision en logica

@@ -1,0 +1,11 @@
+ticket,urgencia,categoria
+Sistema caido no puedo facturar a ningun cliente,alta,tecnico
+Como cambio mi contraseña del portal,baja,cuenta
+Error intermitente en reportes de ventas,media,tecnico
+No recibi mi pedido despues de 2 semanas,alta,logistica
+Quiero saber los horarios de atencion,baja,informacion
+La aplicacion se cierra sola al abrir PDFs,media,tecnico
+Necesito factura electronica del mes pasado,baja,facturacion
+Perdi acceso a mi cuenta y tengo reunion en 1 hora,alta,cuenta
+El producto llego danado quiero devolucion,media,devolucion
+Cual es el plan mas economico para 5 usuarios,baja,ventas
