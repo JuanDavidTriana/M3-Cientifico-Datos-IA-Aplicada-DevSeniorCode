@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 2 · Optimización y Despliegue de Deep Learning</title>
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-panel: #121b2e;
+    --bg-card: #17233b;
+    --border: #23324f;
+    --text: #e6ebf5;
+    --text-dim: #9fb0cc;
+    --accent: #4f8cff;
+    --accent-2: #21c58f;
+    --accent-3: #ff8a3d;
+    --code-bg: #0e1626;
+    --radius: 10px;
+    --maxw: 1080px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header.hero {
+    padding: 48px 24px 32px;
+    background: radial-gradient(1200px 400px at 20% -10%, rgba(79,140,255,0.25), transparent),
+                radial-gradient(900px 300px at 90% -20%, rgba(33,197,143,0.18), transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  header.hero .inner { max-width: var(--maxw); margin: 0 auto; }
+  .eyebrow { color: var(--accent-2); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .78rem; }
+  h1 { font-size: 2rem; margin: .35em 0 .2em; }
+  .subtitle { color: var(--text-dim); font-size: 1.05rem; max-width: 720px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .pill {
+    background: var(--bg-card); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 999px; font-size: .82rem; color: var(--text-dim);
+  }
+
+  .layout { max-width: var(--maxw); margin: 0 auto; padding: 32px 24px 80px; display: grid; grid-template-columns: 240px 1fr; gap: 32px; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } nav.toc { position: static !important; } }
+
+  nav.toc {
+    align-self: start; position: sticky; top: 20px;
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px; font-size: .88rem;
+  }
+  nav.toc h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-dim); margin: 0 0 10px; }
+  nav.toc ol { margin: 0; padding-left: 18px; }
+  nav.toc li { margin-bottom: 7px; }
+  nav.toc a { color: var(--text); }
+  nav.toc a:hover { color: var(--accent); }
+
+  main section { margin-bottom: 46px; scroll-margin-top: 20px; }
+  main h2 {
+    font-size: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  main h2 .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: #04102a;
+    font-size: .85rem; font-weight: 700; flex-shrink: 0;
+  }
+  main h3 { font-size: 1.1rem; color: var(--accent-2); margin-top: 28px; }
+  p { color: #dbe4f5; }
+  .dim { color: var(--text-dim); }
+
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 20px; margin: 16px 0;
+  }
+  .card.tip { border-left: 4px solid var(--accent-2); }
+  .card.warn { border-left: 4px solid var(--accent-3); }
+  .card.note { border-left: 4px solid var(--accent); }
+  .card strong.tag { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-dim); margin-bottom: 6px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .92rem; }
+  th, td { border: 1px solid var(--border); padding: 9px 12px; text-align: left; vertical-align: top; }
+  th { background: var(--bg-panel); color: var(--accent-2); font-weight: 600; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px 16px; overflow-x: auto; font-size: .85rem;
+  }
+  code { font-family: "Cascadia Code", Consolas, monospace; }
+  p code, li code, td code { background: var(--code-bg); padding: 2px 6px; border-radius: 5px; color: var(--accent-2); }
+
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+  .mini-card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
+  .mini-card h4 { margin: 0 0 6px; font-size: .95rem; color: var(--accent); }
+  .mini-card p { margin: 0; font-size: .85rem; color: var(--text-dim); }
+
+  .diagram {
+    background: var(--code-bg); border: 1px dashed var(--border); border-radius: var(--radius);
+    padding: 20px; font-family: Consolas, monospace; font-size: .82rem; color: var(--text-dim);
+    white-space: pre; overflow-x: auto;
+  }
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 18px 0; }
+  .flow .step { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: .85rem; }
+  .flow .arrow { color: var(--accent); font-size: 1.1rem; }
+
+  footer { max-width: var(--maxw); margin: 0 auto; padding: 20px 24px 60px; color: var(--text-dim); font-size: .85rem; border-top: 1px solid var(--border); }
+
+  .badge { display:inline-block; background: rgba(79,140,255,.15); color: var(--accent); border-radius:6px; padding:2px 8px; font-size:.75rem; margin-left:8px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <div class="eyebrow">Unidad 3 · IA Aplicada, Databricks y Arquitecturas Modernas</div>
+    <h1>Clase 2 — Optimización y Despliegue de Deep Learning</h1>
+    <p class="subtitle">Material de apoyo teórico-práctico: cómo llevar un modelo entrenado en Keras a un servicio en producción, más pequeño, más rápido y empaquetado en Docker.</p>
+    <div class="meta-row">
+      <span class="pill">⏱ 4–6 horas presenciales</span>
+      <span class="pill">🧠 TensorFlow · TFLite/ONNX</span>
+      <span class="pill">🚀 FastAPI · Docker</span>
+      <span class="pill">📎 Ver también <code>../README.md</code></span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#intro">De notebook a producción</a></li>
+      <li><a href="#optimizacion">Técnicas de optimización</a></li>
+      <li><a href="#formatos">Formatos de despliegue</a></li>
+      <li><a href="#patrones">Patrones de despliegue</a></li>
+      <li><a href="#fastapi">Servir con FastAPI</a></li>
+      <li><a href="#docker">Empaquetar con Docker</a></li>
+      <li><a href="#ssh-env">SSH y archivos .env</a></li>
+      <li><a href="#metricas">Métricas de despliegue</a></li>
+      <li><a href="#labs">Laboratorios prácticos</a></li>
+      <li><a href="#resumen">Resumen de conceptos</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section id="intro">
+      <h2><span class="num">1</span>De notebook a producción</h2>
+      <p>Un modelo que "funciona" en un notebook y un modelo <em>listo para producción</em> son cosas distintas. En el notebook hay GPU dedicada, tiempo ilimitado y una sola petición a la vez. En producción hay presupuesto de milisegundos, memoria limitada y miles de peticiones concurrentes.</p>
+
+      <div class="flow">
+        <div class="step">Modelo entrenado (.h5)</div>
+        <div class="arrow">→</div>
+        <div class="step">Optimización</div>
+        <div class="arrow">→</div>
+        <div class="step">Modelo liviano (.tflite / .onnx)</div>
+        <div class="arrow">→</div>
+        <div class="step">API (FastAPI)</div>
+        <div class="arrow">→</div>
+        <div class="step">Contenedor Docker</div>
+        <div class="arrow">→</div>
+        <div class="step">Despliegue</div>
+      </div>
+
+      <table>
+        <tr><th>Restricción</th><th>En el notebook</th><th>En producción</th></tr>
+        <tr><td>Hardware</td><td>GPU dedicada, sin límite de tiempo</td><td>CPU compartida, presupuesto de milisegundos</td></tr>
+        <tr><td>Tamaño del modelo</td><td>Irrelevante</td><td>Afecta arranque, memoria y costo</td></tr>
+        <tr><td>Latencia</td><td>No se mide</td><td>Es un SLA (ej. p95 &lt; 200ms)</td></tr>
+        <tr><td>Concurrencia</td><td>Una petición a la vez</td><td>Cientos o miles simultáneas</td></tr>
+        <tr><td>Reproducibilidad</td><td>"Funciona en mi máquina"</td><td>Debe funcionar igual en cualquier entorno</td></tr>
+      </table>
+
+      <div class="card note">
+        <strong class="tag">Analogía</strong>
+        Entrenar es cocinar gourmet en tu cocina con todo el tiempo del mundo. Desplegar es servir ese mismo plato en un restaurante de comida rápida: debe salir en segundos y ser consistente en cada pedido.
+      </div>
+    </section>
+
+    <section id="optimizacion">
+      <h2><span class="num">2</span>Técnicas de optimización de modelos</h2>
+
+      <h3>2.1 Pruning</h3>
+      <p>Elimina (pone en cero) los pesos con menor aporte a la predicción, generando una red más dispersa.</p>
+      <div class="diagram">Red densa:                Red podada:
+●───●───●                 ●───●───●
+│╲ ╱│╲ ╱│                 │   │   │
+│ ╳ │ ╳ │       ───▶      │   │   │
+│╱ ╲│╱ ╲│                 │   │   │
+●───●───●                 ●───●───●
+(todas las conexiones)    (solo conexiones relevantes)</div>
+      <p class="dim">A mayor <code>sparsity</code> objetivo, menor tamaño, pero mayor riesgo de perder precisión si se poda de forma agresiva.</p>
+
+      <h3>2.2 Quantization</h3>
+      <p>Reduce la precisión numérica de los pesos (normalmente de <code>float32</code> a <code>int8</code> o <code>float16</code>), reduciendo tamaño y, en muchos casos, acelerando la inferencia en CPU.</p>
+      <table>
+        <tr><th>Tipo</th><th>Precisión</th><th>Reducción típica</th><th>Cuándo usarla</th></tr>
+        <tr><td>Dynamic range</td><td>int8 pesos / float32 activaciones</td><td>~4x</td><td>Punto de partida, sin dataset de calibración</td></tr>
+        <tr><td>Float16</td><td>float16</td><td>~2x</td><td>Hardware con soporte float16</td></tr>
+        <tr><td>Full integer (int8)</td><td>int8 pesos y activaciones</td><td>~4x</td><td>Edge / microcontroladores, requiere calibración</td></tr>
+        <tr><td>QAT (aware training)</td><td>int8 simulado en entrenamiento</td><td>~4x</td><td>Cuando post-training pierde demasiada precisión</td></tr>
+      </table>
+      <div class="card tip">
+        <strong class="tag">Analogía</strong>
+        Es como comprimir una foto a JPEG: el archivo pesa una fracción del original y, para la tarea, la diferencia es casi imperceptible.
+      </div>
+
+      <h3>2.3 Knowledge Distillation</h3>
+      <p>Un modelo pequeño (<em>student</em>) se entrena para imitar las predicciones de un modelo grande ya entrenado (<em>teacher</em>), aprendiendo de la distribución de probabilidades completa (<em>soft labels</em>) en vez de solo la etiqueta correcta.</p>
+      <div class="grid-cards">
+        <div class="mini-card"><h4>Teacher</h4><p>Modelo grande, ya entrenado, genera predicciones "suaves"</p></div>
+        <div class="mini-card"><h4>Student</h4><p>Modelo pequeño, se entrena desde cero imitando al teacher</p></div>
+        <div class="mini-card"><h4>Resultado</h4><p>Modelo compacto con desempeño cercano al original</p></div>
+      </div>
+
+      <h3>2.4 Comparación resumen</h3>
+      <table>
+        <tr><th>Técnica</th><th>↓ Tamaño</th><th>↓ Latencia</th><th>Requiere reentrenar</th><th>Complejidad</th></tr>
+        <tr><td>Pruning</td><td>Sí</td><td>A veces</td><td>Recomendado</td><td>Media</td></tr>
+        <tr><td>Quantization post-training</td><td>Sí</td><td>Sí</td><td>No</td><td>Baja</td></tr>
+        <tr><td>QAT</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Media-alta</td></tr>
+        <tr><td>Distillation</td><td>Sí (mucho)</td><td>Sí</td><td>Sí, desde cero</td><td>Alta</td></tr>
+      </table>
+    </section>
+
+    <section id="formatos">
+      <h2><span class="num">3</span>Formatos de modelo para despliegue</h2>
+      <table>
+        <tr><th>Formato</th><th>Origen</th><th>Ventajas</th><th>Uso típico</th></tr>
+        <tr><td>SavedModel</td><td>TensorFlow nativo</td><td>Completo, incluye grafo y pesos</td><td>TensorFlow Serving</td></tr>
+        <tr><td>HDF5 (.h5)</td><td>Keras</td><td>Simple</td><td>Prototipado (no recomendado en producción nueva)</td></tr>
+        <tr><td>TFLite (.tflite)</td><td>Conversión desde TF/Keras</td><td>Muy liviano, quantization nativa</td><td>Móviles, edge, microservicios livianos</td></tr>
+        <tr><td>ONNX (.onnx)</td><td>Estándar abierto</td><td>Portable entre frameworks y runtimes</td><td>Cuando el modelo sale del ecosistema TensorFlow</td></tr>
+      </table>
+      <div class="card warn">
+        <strong class="tag">¿Por qué no servir el .h5 directamente?</strong>
+        Acopla el servicio a tener TensorFlow completo instalado (cientos de MB), con arranque más lento y sin las optimizaciones de un runtime especializado en inferencia.
+      </div>
+    </section>
+
+    <section id="patrones">
+      <h2><span class="num">4</span>Patrones de despliegue</h2>
+      <div class="grid-cards">
+        <div class="mini-card"><h4>Batch</h4><p>Procesa grandes volúmenes periódicamente, sin respuesta inmediata (ej. scoring nocturno).</p></div>
+        <div class="mini-card"><h4>Online / REST API <span class="badge">usado en esta clase</span></h4><p>Responde a peticiones individuales en tiempo real.</p></div>
+        <div class="mini-card"><h4>Edge</h4><p>El modelo corre en el dispositivo del usuario, sin red.</p></div>
+        <div class="mini-card"><h4>Streaming</h4><p>Procesa eventos continuos de un stream (ej. detección de fraude en vivo).</p></div>
+      </div>
+    </section>
+
+    <section id="fastapi">
+      <h2><span class="num">5</span>Servir el modelo con FastAPI</h2>
+      <p>FastAPI valida datos con Pydantic, genera documentación interactiva en <code>/docs</code> y es rápido de escribir. El modelo se carga <strong>una sola vez</strong> al iniciar la aplicación, nunca dentro del endpoint.</p>
+      <pre><code>from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI(title="Servicio de inferencia")
+
+class PredictionRequest(BaseModel):
+    image: list  # matriz de píxeles normalizada
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+@app.post("/predict")
+def predict(request: PredictionRequest):
+    # cargar modelo una sola vez al iniciar la app
+    # ejecutar inferencia
+    return {"clase": "sneaker", "confianza": 0.94}</code></pre>
+      <p class="dim">Implementación completa en <code>../proyecto_02_api_fastapi_docker/</code>.</p>
+    </section>
+
+    <section id="docker">
+      <h2><span class="num">6</span>Empaquetar con Docker</h2>
+      <table>
+        <tr><th>Concepto</th><th>Definición</th></tr>
+        <tr><td>Imagen</td><td>Plantilla inmutable con sistema, dependencias y código</td></tr>
+        <tr><td>Contenedor</td><td>Instancia en ejecución de una imagen</td></tr>
+        <tr><td>Dockerfile</td><td>Receta de instrucciones para construir la imagen</td></tr>
+        <tr><td>Registry</td><td>Repositorio de imágenes versionadas (Docker Hub, ECR, GCR)</td></tr>
+      </table>
+      <pre><code>FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app/ ./app
+COPY model/ ./model
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]</code></pre>
+      <div class="card tip">
+        <strong class="tag">Buenas prácticas</strong>
+        Usar imágenes <code>slim</code>, copiar <code>requirements.txt</code> antes que el código para aprovechar el caché de capas, excluir notebooks/datasets con <code>.dockerignore</code>, y fijar versiones de dependencias.
+      </div>
+    </section>
+
+    <section id="ssh-env">
+      <h2><span class="num">7</span>SSH y archivos .env</h2>
+
+      <h3>7.1 SSH — acceso remoto seguro</h3>
+      <p><strong>SSH (Secure Shell)</strong> es el protocolo que permite conectarse y ejecutar comandos en un servidor remoto de forma cifrada. Es la puerta de entrada a cualquier máquina en la nube y la base de casi todo despliegue: conectarse a una VM, hacer <code>git push</code>, copiar un modelo con <code>scp</code>, o construir una imagen en un host remoto.</p>
+
+      <div class="diagram">Tu máquina                              Servidor remoto
+┌─────────────────┐                     ┌─────────────────┐
+│ Llave PRIVADA    │   nunca viaja       │ Llave PÚBLICA    │
+│ (id_ed25519)     │   por la red        │ (authorized_keys)│
+└─────────────────┘                     └─────────────────┘
+         │                                        │
+         └──────── desafío cifrado ───────────────┘
+                  (solo quien tiene la privada
+                   puede responder correctamente)</div>
+
+      <div class="card note">
+        <strong class="tag">Analogía</strong>
+        La llave pública es un candado que instalas en la puerta del servidor; la llave privada es la única que lo abre y nunca sale de tu bolsillo. Cualquiera puede ver el candado, solo tú puedes abrirlo.
+      </div>
+
+      <pre><code># Generar un par de llaves (una sola vez)
+ssh-keygen -t ed25519 -C "tu_correo@ejemplo.com"
+
+# Copiar la llave pública al servidor
+ssh-copy-id usuario@servidor.ejemplo.com
+
+# Conectarte
+ssh usuario@servidor.ejemplo.com
+
+# Copiar el modelo optimizado al servidor
+scp modelo_optimizado.tflite usuario@servidor:/ruta/destino/
+
+# Ejecutar un comando remoto sin sesión interactiva
+ssh usuario@servidor "docker compose up -d"</code></pre>
+
+      <div class="card tip">
+        <strong class="tag">Buenas prácticas</strong>
+        Autenticarse siempre con llaves (nunca contraseña), proteger la llave privada con passphrase, no compartirla ni subirla a un repositorio, usar <code>~/.ssh/config</code> para no repetir host/usuario, y rotar/revocar accesos cuando alguien deja el equipo.
+      </div>
+
+      <h3>7.2 Archivos .env — configuración separada del código</h3>
+      <p>Un <code>.env</code> es un archivo con pares <code>CLAVE=valor</code> que contiene la configuración de un entorno: rutas, puertos, credenciales, API keys. La regla central: <strong>el código nunca debe tener valores hardcodeados que cambien entre entornos o que sean secretos.</strong></p>
+
+      <pre><code># .env
+MODEL_PATH=/app/model/modelo_optimizado.tflite
+LOG_LEVEL=INFO
+API_KEY=sk-xxxxxxxxxxxxxxxx</code></pre>
+
+      <table>
+        <tr><th>Problema sin .env</th><th>Solución con .env</th></tr>
+        <tr><td>Credenciales hardcodeadas, visibles en el historial de git</td><td>Los secretos viven fuera del repositorio</td></tr>
+        <tr><td>El mismo código no sirve para dev/staging/producción</td><td>Cada entorno tiene su propio .env</td></tr>
+        <tr><td>Cambiar config implica modificar y redeployar código</td><td>Basta con cambiar el .env y reiniciar</td></tr>
+      </table>
+
+      <p class="dim">El proyecto 2 de esta clase ya aplica esta idea: <code>app/model_utils.py</code> lee <code>os.environ.get("MODEL_PATH", ...)</code>, para poder sobreescribir la ruta del modelo sin tocar el código.</p>
+
+      <pre><code># Docker
+docker run --env-file .env -p 8000:8000 clase02-inference-api
+
+# docker-compose.yml
+services:
+  modelo-optimizado:
+    build: ./servicio_optimizado
+    env_file:
+      - .env</code></pre>
+
+      <div class="card warn">
+        <strong class="tag">Regla de oro</strong>
+        El <code>.env</code> con valores reales nunca se sube al repositorio (va en <code>.gitignore</code>). Se versiona un <code>.env.example</code> con las claves esperadas, sin valores sensibles.
+      </div>
+    </section>
+
+    <section id="metricas">
+      <h2><span class="num">8</span>Métricas de despliegue</h2>
+      <table>
+        <tr><th>Métrica</th><th>Qué mide</th><th>Cómo se calcula en el laboratorio</th></tr>
+        <tr><td>Tamaño del modelo</td><td>Peso en disco del artefacto</td><td><code>os.path.getsize()</code> sobre .h5 vs .tflite</td></tr>
+        <tr><td>Latencia</td><td>Tiempo de una inferencia individual</td><td>Promedio de N llamadas cronometradas</td></tr>
+        <tr><td>Throughput</td><td>Peticiones atendidas por segundo</td><td>N peticiones / tiempo total</td></tr>
+        <tr><td>Precisión</td><td>Calidad de las predicciones</td><td>Accuracy en el set de prueba antes/después de optimizar</td></tr>
+      </table>
+      <p>El objetivo nunca es optimizar a ciegas: siempre se compara lo ganado en tamaño y latencia contra lo perdido en precisión.</p>
+    </section>
+
+    <section id="labs">
+      <h2><span class="num">9</span>Laboratorios prácticos de esta clase</h2>
+      <div class="grid-cards">
+        <div class="mini-card">
+          <h4>1. Optimización de modelo</h4>
+          <p>CNN en Fashion-MNIST → pruning → quantization → export a TFLite. Carpeta <code>proyecto_01_optimizacion_modelo/</code>.</p>
+        </div>
+        <div class="mini-card">
+          <h4>2. API + Docker</h4>
+          <p>Sirve el modelo optimizado con FastAPI, empaquetado en Docker. Carpeta <code>proyecto_02_api_fastapi_docker/</code>.</p>
+        </div>
+        <div class="mini-card">
+          <h4>3. Benchmark integrador</h4>
+          <p>docker-compose con modelo base vs optimizado, comparando latencia y throughput. Carpeta <code>proyecto_03_benchmark_integrador/</code>.</p>
+        </div>
+      </div>
+      <p class="dim">Orden recomendado: proyecto 1 → proyecto 2 → proyecto 3. Cada uno consume los artefactos generados por el anterior. Instrucciones detalladas de ejecución en el <code>README.md</code> de cada proyecto.</p>
+    </section>
+
+    <section id="resumen">
+      <h2><span class="num">10</span>Resumen de conceptos</h2>
+      <table>
+        <tr><th>Concepto</th><th>Idea clave</th><th>Herramienta principal</th><th>Riesgo frecuente</th></tr>
+        <tr><td>Pruning</td><td>Elimina pesos poco relevantes</td><td>tensorflow-model-optimization</td><td>Podar demasiado y perder precisión</td></tr>
+        <tr><td>Quantization</td><td>Reduce precisión numérica de los pesos</td><td>TFLiteConverter</td><td>Asumir que siempre acelera en cualquier hardware</td></tr>
+        <tr><td>Distillation</td><td>Modelo pequeño imita a uno grande</td><td>Entrenamiento custom con soft labels</td><td>Costo de entrenamiento adicional</td></tr>
+        <tr><td>TFLite / ONNX</td><td>Formatos livianos para inferencia</td><td>tf.lite, tf2onnx, onnxruntime</td><td>Elegir formato incompatible con el runtime destino</td></tr>
+        <tr><td>FastAPI</td><td>Expone el modelo como servicio REST</td><td>fastapi, uvicorn</td><td>Recargar el modelo en cada petición</td></tr>
+        <tr><td>Docker</td><td>Empaqueta el servicio de forma reproducible</td><td>Dockerfile, docker-compose</td><td>Imágenes pesadas por dependencias de entrenamiento</td></tr>
+        <tr><td>SSH</td><td>Acceso remoto cifrado a servidores</td><td>ssh, scp, ssh-keygen</td><td>Autenticarse con contraseña en vez de llaves</td></tr>
+        <tr><td>.env</td><td>Separa configuración/secretos del código</td><td>python-dotenv, --env-file, env_file</td><td>Subir el .env real al repositorio</td></tr>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Clase 2 — Optimización y Despliegue de Deep Learning · Unidad 3, Científico de Datos e IA Aplicada · DevSeniorCode.
+  Documento complementario del <a href="../README.md">README.md</a> de la clase.
+</footer>
+
+</body>
+</html>

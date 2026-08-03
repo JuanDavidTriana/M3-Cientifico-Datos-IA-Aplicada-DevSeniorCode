@@ -17,3 +17,8 @@
 
 !02_nlp_ia_generativa/clase_03_ia_generativa_prompt_engineering/PromptEngineering_Lab/datasets
 !02_nlp_ia_generativa/clase_03_ia_generativa_prompt_engineering/PromptEngineering_Lab/datasets/*.csv
+
+# Nunca subir archivos .env con secretos/configuración real (sí se versiona .env.example)
+.env
+.env.*
+!.env.example
