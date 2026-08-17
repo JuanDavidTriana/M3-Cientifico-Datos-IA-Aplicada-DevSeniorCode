@@ -1,0 +1,27 @@
+# Datos e imágenes -- nunca se suben al repositorio (ver data/README.md)
+data/*.csv
+archive*/
+*.jpeg
+*.jpg
+*.png
+
+# Modelos entrenados y artefactos de MLflow (pesan cientos de MB, se regeneran corriendo los notebooks)
+models/
+mlruns/
+mlartifacts/
+mlflow.db
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.venv/
+venv/
+
+# Entorno / secretos
+.env
+
+# Sistema
+.DS_Store
